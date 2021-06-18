@@ -1,3 +1,4 @@
+import debounce from './utils/debounce'
 import React from 'react'
 import './App.scss'
 
@@ -38,9 +39,9 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 
 function App() {
   const [noteText, setNoteText] = useLocalStorage<string>('note-text', '')
-  const updateNoteText = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ): void => setNoteText(event.target.value)
+  const updateNoteText = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setNoteText(event.target.value)
+  const noteChangeHandler = debounce(updateNoteText, 300)
 
   return (
     <form action='#' className='note-text h-100'>
@@ -51,8 +52,8 @@ function App() {
         name='note-text'
         id='note-text'
         className='note-text__textarea h-100'
-        onChange={updateNoteText}
-        value={noteText}
+        onChange={noteChangeHandler}
+        defaultValue={noteText}
       />
     </form>
   )
