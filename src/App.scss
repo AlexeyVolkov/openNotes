@@ -66,6 +66,9 @@ body {
     border: none;
     border-top: thin solid #cacacade;
     border-bottom: thin solid #cacacade;
+    &:focus {
+      outline: none;
+    }
 
     font-size: 1.6rem;
     font-weight: 200;
