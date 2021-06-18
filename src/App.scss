@@ -26,6 +26,7 @@ $font-family-sans-serif:
 $line-height: 2rem;
 $textarea-left-padding_start: 4.938rem;
 $textarea-left-padding_end: 5.063rem;
+$border-color: #cacacade;
 
 // global styles
 * {
@@ -53,6 +54,8 @@ body {
 
 // .note-text
 .note-text {
+  position: relative;
+
   &__label {
     @include visually-hidden;
   }
@@ -64,8 +67,8 @@ body {
 
     background-color: transparent;
     border: none;
-    border-top: thin solid #cacacade;
-    border-bottom: thin solid #cacacade;
+    border-top: thin solid $border-color;
+    border-bottom: thin solid $border-color;
     &:focus {
       outline: none;
     }
@@ -73,6 +76,7 @@ body {
     font-size: 1.6rem;
     font-weight: 200;
     text-shadow: 0.01rem 0.01rem #0000004f;
+    color: #383838;
 
     hanging-punctuation: first force-end last;
     font-feature-settings: 'onum', 'tnum', 'zero';
@@ -80,5 +84,13 @@ body {
     text-rendering: geometricPrecision;
     hyphens: auto;
     text-align: justify;
+  }
+
+  &__date {
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $border-color;
   }
 }
