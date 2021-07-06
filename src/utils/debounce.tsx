@@ -1,9 +1,20 @@
-const debounce = (fn: Function, ms: number = 300) => {
-  let timeoutId: ReturnType<typeof setTimeout>
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn.apply(this, args), ms)
-  }
+/**
+ * @see https://usehooks-typescript.com/react-hook/use-debounce
+ */
+import { useEffect, useState } from 'react'
+
+function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+
+  return debouncedValue
 }
 
-export default debounce
+export default useDebounce

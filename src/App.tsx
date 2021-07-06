@@ -1,32 +1,50 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState, useEffect } from 'react'
 
-import debounce from './utils/debounce'
+import useDebounce from './utils/debounce'
 import useLocalStorage from './utils/useLocalStorage'
 import './App.scss'
 
+const debounceDelay = 1 * 1000 // ms
+
 function App() {
+  // note text
   const [noteText, setNoteText] = useLocalStorage<string>('note-text', '')
+  const [tempText, setTempText] = useState<string>(noteText)
+  const debouncedNoteText = useDebounce<string>(tempText, debounceDelay)
+  useEffect(() => {
+    setNoteText(debouncedNoteText)
+  }, [debouncedNoteText, setNoteText])
+  // note date
   const [noteLastModifiedDate, setNoteLastModifiedDate] = useLocalStorage<Date>(
     'note-date',
     new Date()
   )
+  const [tempLastModifiedDate, setTempLastModifiedDate] =
+    useState<Date>(noteLastModifiedDate)
+  const debouncedLastModifiedDate = useDebounce<Date>(
+    tempLastModifiedDate,
+    debounceDelay
+  )
+  useEffect(() => {
+    setNoteLastModifiedDate(debouncedLastModifiedDate)
+  }, [debouncedLastModifiedDate, setNoteLastModifiedDate])
+
+  // Parse date
   const options: object = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   }
-  const dateToShow: string = new Date(noteLastModifiedDate).toLocaleDateString(
-    'en-US',
-    options
-  )
+  const dateToShow: string = new Date(
+    debouncedLastModifiedDate
+  ).toLocaleDateString('en-US', options)
 
-  const updateNoteText = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setNoteText(event.target.value)
-    setNoteLastModifiedDate(new Date())
+  // on change handler
+  const noteChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setTempText(event.target.value)
+    setTempLastModifiedDate(new Date())
   }
-
-  const noteChangeHandler = debounce(updateNoteText, 300)
 
   return (
     <form action='#' className='note-text h-100'>
@@ -38,7 +56,7 @@ function App() {
         id='note-text'
         className='note-text__textarea h-100'
         onChange={noteChangeHandler}
-        defaultValue={noteText}
+        defaultValue={debouncedNoteText}
       />
       <aside className='note-text__date'>{dateToShow}</aside>
     </form>
