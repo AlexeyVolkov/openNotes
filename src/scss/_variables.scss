@@ -1,0 +1,27 @@
+// variables
+$font-family-sans-serif:
+    // Cross-platform generic font family (default user interface font)
+  system-ui,
+  // Safari for macOS and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for macOS (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  'Segoe UI',
+  // Android
+  Roboto,
+  // Basic web fallback
+  'Helvetica Neue',
+  Arial,
+  // Linux
+  'Noto Sans',
+  'Liberation Sans',
+  // Sans serif fallback
+  sans-serif,
+  // Emoji fonts
+  'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$line-height: 2rem;
+$textarea-left-padding_start: 4.938rem;
+$textarea-left-padding_end: 5.063rem;
+$border-color: #cacacade;
