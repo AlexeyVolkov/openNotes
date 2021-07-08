@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { noteName } from './constants'
+import { noteName } from '../../utils/constants'
 import Textarea from './Textarea'
 
 test('renders textarea', () => {
