@@ -1,18 +1,42 @@
-import React from 'react'
+import { ChangeEvent } from 'react'
+
+import Textarea from './components/Textarea/Textarea'
+import useDebouncedLocalStorage from './utils/useDebouncedLocalStorage'
+import {
+  debounceDelay,
+  localeOptions,
+  localeTimezone,
+  noteDate,
+  noteName,
+} from './utils/constants'
+
 import './App.scss'
 
-function App() {
+const App = () => {
+  // note text
+  const [noteText, setNoteText] = useDebouncedLocalStorage<string>(
+    noteName,
+    '',
+    debounceDelay
+  )
+  // note date
+  const [noteLastModifiedDate, setNoteLastModifiedDate] =
+    useDebouncedLocalStorage<Date>(noteDate, new Date(), debounceDelay)
+  // Parse date
+  const dateToShow: string = new Date(noteLastModifiedDate).toLocaleDateString(
+    localeTimezone,
+    localeOptions
+  )
+  // on change handler
+  const noteChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setNoteText(event.target.value)
+    setNoteLastModifiedDate(new Date())
+  }
+
   return (
-    <form action='#' className='note-text h-100'>
-      <label htmlFor='note-text' className='note-text__label'>
-        Note
-      </label>
-      <textarea
-        name='note-text'
-        id='note-text'
-        className='note-text__textarea h-100'
-      ></textarea>
-    </form>
+    <Textarea dateToShow={dateToShow} onChange={noteChangeHandler}>
+      {noteText}
+    </Textarea>
   )
 }
 

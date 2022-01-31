@@ -1,0 +1,45 @@
+@import '../../scss/variables';
+@import '../../scss/visually-hidden';
+
+// .note-text
+.note-text {
+  position: relative;
+
+  &__label {
+    @include visually-hidden;
+  }
+  &__textarea {
+    width: 100%;
+    margin: 0;
+    padding: $line-height $textarea-left-padding_end + 1rem;
+    line-height: $line-height;
+
+    background-color: transparent;
+    border: none;
+    border-top: thin solid $border-color;
+    border-bottom: thin solid $border-color;
+    &:focus {
+      outline: none;
+    }
+
+    font-size: 1.6rem;
+    font-weight: 200;
+    text-shadow: 0.01rem 0.01rem #0000004f;
+    color: #383838;
+
+    hanging-punctuation: first force-end last;
+    font-feature-settings: 'onum', 'tnum', 'zero';
+    font-variant-numeric: tabular-nums slashed-zero oldstyle-nums;
+    text-rendering: geometricPrecision;
+    hyphens: auto;
+    text-align: justify;
+  }
+
+  &__date {
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $border-color;
+  }
+}
