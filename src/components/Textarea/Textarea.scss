@@ -9,17 +9,29 @@
     @include visually-hidden;
   }
   &__textarea {
-    width: 100%;
-    margin: 0;
+    width: calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
+    margin: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left) !important;
     padding: $line-height $textarea-left-padding_end + 1rem;
+    padding-right: 0;
     line-height: $line-height;
 
-    background-color: transparent;
+    background-image: linear-gradient(
+        90deg,
+        transparent $textarea-left-padding_start,
+        #abced4 $textarea-left-padding_start,
+        #abced4 $textarea-left-padding_end,
+        transparent $textarea-left-padding_end
+      ),
+      linear-gradient($border-color 0.1rem, transparent 0.1rem);
+    background-size: 100% $line-height;
+
     border: none;
-    border-top: thin solid $border-color;
-    border-bottom: thin solid $border-color;
+    border-left: thin solid $border-color;
+    border-right: thin solid $border-color;
+
     &:focus {
-      outline: none;
+      outline: thin solid darken($border-color, 10%);
     }
 
     font-size: 1.6rem;
@@ -41,5 +53,6 @@
     left: 50%;
     transform: translateX(-50%);
     color: $border-color;
+    user-select: none;
   }
 }

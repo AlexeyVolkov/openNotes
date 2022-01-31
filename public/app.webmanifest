@@ -28,6 +28,6 @@
   "scope": "./",
   "orientation": "all",
   "display": "standalone",
-  "theme_color": "#cacacade",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
