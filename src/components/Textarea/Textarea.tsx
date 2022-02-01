@@ -19,6 +19,7 @@ const Textarea = (props: Props) => {
         className='note-text__textarea h-100'
         onChange={props.onChange}
         value={String(props.children)}
+        placeholder='Write...'
       />
       <aside className='note-text__date'>{props.dateToShow}</aside>
     </form>
