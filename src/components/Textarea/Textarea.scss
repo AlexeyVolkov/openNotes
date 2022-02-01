@@ -9,29 +9,20 @@
     @include visually-hidden;
   }
   &__textarea {
-    width: calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
-    margin: env(safe-area-inset-top) env(safe-area-inset-right)
-      env(safe-area-inset-bottom) env(safe-area-inset-left) !important;
-    padding: $line-height $textarea-left-padding_end + 1rem;
+    width: 80%;
+    height: 10em;
+    display: block;
+    margin: $line-height auto;
+    padding: $line-height;
     padding-right: 0;
     line-height: $line-height;
 
-    background-image: linear-gradient(
-        90deg,
-        transparent $textarea-left-padding_start,
-        #abced4 $textarea-left-padding_start,
-        #abced4 $textarea-left-padding_end,
-        transparent $textarea-left-padding_end
-      ),
-      linear-gradient($border-color 0.1rem, transparent 0.1rem);
-    background-size: 100% $line-height;
-
     border: none;
-    border-left: thin solid $border-color;
-    border-right: thin solid $border-color;
+    box-shadow: 0 0 1em $border-color;
+    border-radius: 0.25em;
 
     &:focus {
-      outline: thin solid darken($border-color, 10%);
+      outline: thin solid $border-color;
     }
 
     font-size: 1.6rem;
@@ -52,7 +43,7 @@
     top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    color: $border-color;
+    color: darken($border-color, 10%);
     user-select: none;
   }
 }
