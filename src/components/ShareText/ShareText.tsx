@@ -1,24 +1,24 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { ShareIcon, CopyIcon } from "./icons";
-import { copyText, shareText } from "./utils";
-import { IShareTextProps } from "./types";
+import { ShareIcon, CopyIcon } from './icons'
+import { copyText, shareText } from './utils'
+import { IShareTextProps } from './types'
 
 const ShareText = ({ text, className }: IShareTextProps) => {
-  const [canShare, setCanShare] = React.useState(false);
+  const [canShare, setCanShare] = React.useState(false)
   const handleShareText = () =>
     shareText({
-      text,
-    });
-  const handleCopyText = () => copyText(text);
+      text
+    })
+  const handleCopyText = () => copyText(text)
 
   React.useEffect(() => {
     window.navigator.canShare &&
       window.navigator.canShare({
-        text,
+        text
       }) &&
-      setCanShare(true);
-  }, []);
+      setCanShare(true)
+  }, [text])
 
   if (canShare) {
     return (
@@ -26,7 +26,7 @@ const ShareText = ({ text, className }: IShareTextProps) => {
         <ShareIcon />
         Share text
       </button>
-    );
+    )
   }
 
   return (
@@ -34,6 +34,6 @@ const ShareText = ({ text, className }: IShareTextProps) => {
       <CopyIcon />
       Copy text
     </button>
-  );
-};
-export default ShareText;
+  )
+}
+export default ShareText

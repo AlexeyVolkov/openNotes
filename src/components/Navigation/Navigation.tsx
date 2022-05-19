@@ -1,10 +1,10 @@
-import styles from "./Navigation.module.scss";
-import { ReactComponent as GitHubIcon } from "./icons/github.svg";
-import ShareText from "../ShareText";
+import styles from './Navigation.module.scss'
+import { ReactComponent as GitHubIcon } from './icons/github.svg'
+import ShareText from '../ShareText'
 
 export type NavigationPropsType = {
-  text: string;
-};
+  text: string
+}
 
 const Navigation = ({ text }: NavigationPropsType) => (
   <nav className="d-flex flex-row justify-content-around align-items-center py-2 border-bottom">
@@ -29,6 +29,6 @@ const Navigation = ({ text }: NavigationPropsType) => (
       </li>
     </ul>
   </nav>
-);
+)
 
-export default Navigation;
+export default Navigation

@@ -1,6 +1,6 @@
 export interface IShareText {
-  text: string;
+  text: string
 }
 export interface IShareTextProps extends IShareText {
-  className?: string;
+  className?: string
 }
