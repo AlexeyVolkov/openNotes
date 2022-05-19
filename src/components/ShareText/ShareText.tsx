@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { ShareIcon, CopyIcon } from './icons'
+import { ShareIcon, CopyIcon } from "./icons"
 import { copyText, shareText } from './utils'
 import { IShareTextProps } from './types'
 
