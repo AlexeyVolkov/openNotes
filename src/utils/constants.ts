@@ -2,7 +2,7 @@ export const localeOptions: object = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
-  day: 'numeric',
+  day: 'numeric'
 }
 
 export const localeTimezone = 'en-US'
