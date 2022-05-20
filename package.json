@@ -32,7 +32,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:fix": "prettier --write . && eslint --fix .",
+    "format": "prettier --write src/**/*.{ts,tsx,scss}",
+    "lint": "eslint --fix src/**/*.{ts,tsx}",
     "prepare": "husky install"
   },
   "eslintConfig": {
