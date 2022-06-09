@@ -1,6 +1,6 @@
 import { IShareText } from './types'
 
 export const shareText = ({ text }: IShareText) =>
-  window.navigator.share({ text }).then()
+  window.navigator.share({ text })
 export const copyText = (text: string) =>
-  navigator.clipboard.writeText(text).then()
+  window.navigator.clipboard.writeText(text)
