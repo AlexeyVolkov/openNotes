@@ -37,7 +37,7 @@
     "build": "react-scripts build",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "lint": "eslint --fix src/**/*.{ts,tsx}",
-    "test": "npm run format && npm run lint",
+    "test": "react-scripts test --watchAll=false && npm run format && npm run lint",
     "prepare": "husky install"
   },
   "eslintConfig": {
