@@ -1,15 +1,13 @@
-import { ChangeEvent } from 'react'
+import React, { ChangeEvent } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Form from './components/Form'
+import { Form, Seo, Navigation } from './components'
 import useDebouncedLocalStorage from './utils/useDebouncedLocalStorage'
 import { debounceDelay, noteName } from './utils/constants'
 import styles from './App.module.scss'
-import Seo from './components/Seo'
-import Navigation from './components/Navigation'
 import packageJSON from '../package.json'
 
-const App = () => {
+function App() {
   // note text
   const [noteText, setNoteText] = useDebouncedLocalStorage<string>(
     noteName,
