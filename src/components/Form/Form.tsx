@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import React, { ChangeEvent } from 'react'
 import styles from './Form.module.scss'
 
 export type FormPropsType = {
@@ -6,7 +6,7 @@ export type FormPropsType = {
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const Form = ({ onChange, children }: FormPropsType) => {
+function Form({ onChange, children }: FormPropsType) {
   return (
     <form action="#" className="mt-2">
       <label htmlFor="note-text" className="form-label visually-hidden">

@@ -4,7 +4,7 @@ import { ShareIcon, CopyIcon } from './icons'
 import { copyText, shareText } from './utils'
 import { IShareTextProps } from './types'
 
-const ShareText = ({ text, className }: IShareTextProps) => {
+function ShareText({ text, className }: IShareTextProps) {
   const [canShare, setCanShare] = React.useState(false)
   const handleShareText = () =>
     shareText({
@@ -13,16 +13,18 @@ const ShareText = ({ text, className }: IShareTextProps) => {
   const handleCopyText = () => copyText(text)
 
   React.useEffect(() => {
-    window.navigator.canShare &&
+    if (
+      typeof window.navigator.canShare !== 'undefined' &&
       window.navigator.canShare({
         text
-      }) &&
+      })
+    )
       setCanShare(true)
   }, [text])
 
   if (canShare) {
     return (
-      <button className={className} onClick={handleShareText}>
+      <button type="button" className={className} onClick={handleShareText}>
         <ShareIcon />
         Share text
       </button>
@@ -30,7 +32,7 @@ const ShareText = ({ text, className }: IShareTextProps) => {
   }
 
   return (
-    <button className={className} onClick={handleCopyText}>
+    <button type="button" className={className} onClick={handleCopyText}>
       <CopyIcon />
       Copy text
     </button>
