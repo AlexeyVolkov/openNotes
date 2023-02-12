@@ -21,3 +21,9 @@ Making their clone looking at their code could be confusing.
 
 This React Notes App playground has features like debounced input, local
 storage, offline-ready app and native share option. It's simple and clear.
+
+## Contributors
+
+<a href="https://github.com/slimcandy/openNotes/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=slimcandy/openNotes" />
+</a>
