@@ -3,7 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "description": "Open Notes - save local messages",
-  "author": "SlimCandy",
+  "author": "@slimcandy",
+  "keywords": [
+    "react",
+    "typescript",
+    "notes",
+    "localstorage"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimcandy/openNotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slimcandy/openNotes/issues"
+  },
+  "homepage": "https://open-notes.netlify.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
