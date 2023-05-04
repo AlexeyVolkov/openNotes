@@ -1,67 +1,28 @@
 {
-  "name": "open-notes",
-  "version": "0.1.0",
+  "name": "opennotes",
   "private": true,
-  "description": "Open Notes - save local messages",
-  "author": "@slimcandy",
-  "keywords": [
-    "react",
-    "typescript",
-    "notes",
-    "localstorage"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/slimcandy/openNotes.git"
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "bugs": {
-    "url": "https://github.com/slimcandy/openNotes/issues"
-  },
-  "homepage": "https://open-notes.netlify.app/",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@types/react-helmet": "^6.1.5",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
-    "@typescript-eslint/parser": "^5.27.1",
-    "eslint": "^8.17.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "husky": "^8.0.0",
-    "prettier": "^2.6.2",
-    "typescript": "^4.5.5"
-  },
-  "scripts": {
-    "format": "prettier --write src/**/*.{ts,tsx}",
-    "lint": "eslint --fix src/**/*.{ts,tsx}",
-    "test": "npm run format && npm run lint",
-    "prepare": "husky install"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "engines": {
-    "npm": ">=8.5.5",
-    "node": ">=16.15.0"
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
   }
 }

@@ -1,34 +1,33 @@
-import React, { ChangeEvent } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-import { Form, Seo, Navigation } from './components'
-import useDebouncedLocalStorage from './utils/useDebouncedLocalStorage'
-import { debounceDelay, noteName } from './utils/constants'
-import styles from './App.module.scss'
-import packageJSON from '../package.json'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  // note text
-  const [noteText, setNoteText] = useDebouncedLocalStorage<string>(
-    noteName,
-    '',
-    debounceDelay
-  )
-
-  // on change handler
-  const noteChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setNoteText(event.target.value)
-  }
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Seo title={packageJSON.name} description={packageJSON.description} />
-      <header className={styles.header} id="top">
-        <Navigation text={noteText} />
-      </header>
-      <main className="container">
-        <Form onChange={noteChangeHandler}>{noteText}</Form>
-      </main>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
   )
 }
