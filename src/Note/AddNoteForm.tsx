@@ -1,8 +1,10 @@
 // AddNoteForm.tsx
 import React, { useId, useState } from "react";
 import { Note } from "./types";
+import { useStorage } from "../Storage/useStorage";
 
 function AddNoteForm() {
+  const storage = useStorage();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const titleId = useId();
@@ -12,13 +14,13 @@ function AddNoteForm() {
     event.preventDefault();
 
     const newNote: Note = {
-      id: Math.floor(Math.random() * 10000),
+      id: Math.floor(new Date().valueOf()),
       title,
       content,
       createdAt: new Date(),
     };
 
-    console.log(newNote);
+    storage.put(newNote);
     setTitle("");
     setContent("");
   };

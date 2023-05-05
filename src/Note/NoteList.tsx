@@ -1,26 +1,22 @@
-// NotesList.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Note } from "./types";
 import NoteItem from "./NoteItem";
-
-const defaultNotes: Note[] = [
-  {
-    id: 1,
-    title: "Note 1",
-    content: "Content 1",
-    createdAt: new Date(),
-  },
-  {
-    id: 2,
-    title: "Note 2",
-    content: "Content 2",
-    createdAt: new Date(),
-  },
-];
+import { useStorage } from "../Storage/useStorage";
 
 function NotesList() {
-  const [notes, setNotes] = useState<Note[]>(defaultNotes);
+  const storage = useStorage();
+  const [notes, setNotes] = useState<Note[]>([]);
 
+  useEffect(() => {
+    async function fetchNotes() {
+      const allNotes = await storage.getAll();
+      allNotes.length > 0 && setNotes(allNotes);
+    }
+
+    fetchNotes();
+  }, [storage]);
+
+  if (notes.length === 0) return <p>No notes found</p>;
   return (
     <ol>
       {notes.map(function renderNoteItem(note) {
