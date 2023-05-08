@@ -14,7 +14,7 @@ function NotesList() {
         .map(function renderNoteItem(note) {
           return (
             <li key={note.id}>
-              <NoteItem key={note.id} note={note} />
+              <NoteItem note={note} />
             </li>
           );
         })}

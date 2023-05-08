@@ -1,8 +1,12 @@
-export interface INote {
-  id: number;
+export interface INoteInitials {
   title: string;
   content: string;
+}
+
+export interface INote extends INoteInitials {
+  id: number;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface NoteItemProps {
