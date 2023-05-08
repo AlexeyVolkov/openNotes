@@ -9,4 +9,7 @@ export interface NoteItemProps {
   note: INote;
 }
 
-export type TNotesContext = [notes: INote[], addNote: (note: INote) => void];
+export type TNotesContext = [
+  notes: INote[],
+  setNotes: (notes: INote[]) => void
+];

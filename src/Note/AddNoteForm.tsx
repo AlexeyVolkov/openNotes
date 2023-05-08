@@ -3,9 +3,11 @@ import React, { useId, useState } from "react";
 
 import { useNotes } from "../Storage/useNotes";
 import { INote } from "./types";
+import { useStorage } from "../Storage/useStorage";
 
 function AddNoteForm() {
-  const [, addNote] = useNotes();
+  const [notes, setNotes] = useNotes();
+  const { put } = useStorage();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const titleId = useId();
@@ -21,7 +23,9 @@ function AddNoteForm() {
       createdAt: new Date(),
     };
 
-    addNote(newNote);
+    setNotes([...notes, newNote]);
+    put(newNote);
+
     setTitle("");
     setContent("");
   };

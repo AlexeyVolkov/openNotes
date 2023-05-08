@@ -5,7 +5,7 @@ import { useStorage } from "./useStorage";
 
 export function NotesProvider({ children }: { children: React.ReactNode }) {
   const [notes, setNotes] = useState<INote[]>([]);
-  const { getAll, put } = useStorage();
+  const { getAll } = useStorage();
 
   useEffect(
     function getNotes() {
@@ -20,14 +20,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
     [getAll]
   );
 
-  function addNote(note: INote) {
-    note.id = new Date().getTime();
-
-    setNotes([...notes, note]);
-    put(note);
-  }
-
-  const value: TNotesContext = [notes, addNote];
+  const value: TNotesContext = [notes, setNotes];
   return (
     <NotesContext.Provider value={value}>{children}</NotesContext.Provider>
   );

@@ -102,5 +102,5 @@ export const indexedDBStorage: IStorageMethods = {
   search: searchNotesInDB,
   put: putNoteToDB,
   update: putNoteToDB,
-  delete: deleteNoteFromDB,
+  remove: deleteNoteFromDB,
 };
