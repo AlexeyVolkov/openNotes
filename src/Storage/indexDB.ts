@@ -1,11 +1,11 @@
 import { openDB, DBSchema, IDBPDatabase } from "idb";
-import { Note } from "../Note/types";
+import { INote } from "../Note/types";
 import { IStorageMethods } from "./interface";
 
 interface INotesDatabase extends DBSchema {
   notes: {
     key: number;
-    value: Note;
+    value: INote;
     indexes: { [DB_INDEX_NAME]: string };
   };
 }
@@ -17,11 +17,11 @@ const DB_UNIQUE_KEY = "id" as const;
 const DB_INDEX_NAME = "by-title" as const;
 const DB_INDEX_KEY_PATH = "title" as const;
 
-let database: IDBPDatabase<INotesDatabase>;
+let databasePromise: Promise<IDBPDatabase<INotesDatabase>>;
 
 async function initializeDB(dbName = DB_NAME, storeName = DB_TABLE_NAME) {
-  if (!database) {
-    database = await openDB<INotesDatabase>(dbName, DB_VERSION, {
+  if (!databasePromise) {
+    databasePromise = openDB<INotesDatabase>(dbName, DB_VERSION, {
       upgrade(database) {
         database
           .createObjectStore(storeName, {
@@ -33,7 +33,8 @@ async function initializeDB(dbName = DB_NAME, storeName = DB_TABLE_NAME) {
   }
 }
 
-async function putNoteToDB(note: Note) {
+async function putNoteToDB(note: INote) {
+  const database = await databasePromise;
   if (database) {
     const transaction = database.transaction(DB_TABLE_NAME, "readwrite");
     const table = transaction.objectStore(DB_TABLE_NAME);
@@ -42,15 +43,21 @@ async function putNoteToDB(note: Note) {
   }
 }
 
-async function getNote(id: number): Promise<Note | null> {
-  const transaction = database.transaction(DB_TABLE_NAME, "readonly");
-  const table = transaction.objectStore(DB_TABLE_NAME);
-  const note = await table.get(id);
-  await transaction.done;
-  return note ?? null;
+async function getNote(id: number): Promise<INote | null> {
+  const database = await databasePromise;
+  if (database) {
+    const transaction = database.transaction(DB_TABLE_NAME, "readonly");
+    const table = transaction.objectStore(DB_TABLE_NAME);
+    const note = await table.get(id);
+    await transaction.done;
+    return note ?? null;
+  } else {
+    return null;
+  }
 }
 
 async function deleteNoteFromDB(noteId: number) {
+  const database = await databasePromise;
   if (database) {
     const transaction = database.transaction(DB_TABLE_NAME, "readwrite");
     const table = transaction.objectStore(DB_TABLE_NAME);
@@ -59,24 +66,30 @@ async function deleteNoteFromDB(noteId: number) {
   }
 }
 
-async function getNotesFromDB(): Promise<Note[]> {
+async function getNotesFromDB(): Promise<INote[]> {
+  await initializeDB();
+  const database = await databasePromise;
   if (database) {
     const transaction = database.transaction(DB_TABLE_NAME, "readonly");
     const table = transaction.objectStore(DB_TABLE_NAME);
+    const notes = await table.getAll();
     await transaction.done;
-    return await table.getAll();
+    return notes;
   } else {
+    console.log("no database");
     return [];
   }
 }
 
-async function searchNotesInDB(query: string): Promise<Note[]> {
+async function searchNotesInDB(query: string): Promise<INote[]> {
+  const database = await databasePromise;
   if (database) {
     const transaction = database.transaction(DB_TABLE_NAME, "readonly");
     const table = transaction.objectStore(DB_TABLE_NAME);
     const index = table.index(DB_INDEX_NAME);
+    const notes = await index.getAll(query);
     await transaction.done;
-    return await index.getAll(query);
+    return notes;
   } else {
     return [];
   }

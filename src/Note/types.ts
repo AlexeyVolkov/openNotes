@@ -1,4 +1,4 @@
-export interface Note {
+export interface INote {
   id: number;
   title: string;
   content: string;
@@ -6,5 +6,7 @@ export interface Note {
 }
 
 export interface NoteItemProps {
-  note: Note;
+  note: INote;
 }
+
+export type TNotesContext = [notes: INote[], addNote: (note: INote) => void];

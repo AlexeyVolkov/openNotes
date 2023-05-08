@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
-import { Note } from "./types";
 import NoteItem from "./NoteItem";
-import { useStorage } from "../Storage/useStorage";
+import { useNotes } from "../Storage/useNotes";
 
 function NotesList() {
-  const storage = useStorage();
-  const [notes, setNotes] = useState<Note[]>([]);
-
-  useEffect(() => {
-    async function fetchNotes() {
-      const allNotes = await storage.getAll();
-      allNotes.length > 0 && setNotes(allNotes);
-    }
-
-    fetchNotes();
-  }, [storage]);
+  const [notes] = useNotes();
 
   if (notes.length === 0) return <p>No notes found</p>;
   return (
-    <ol>
-      {notes.map(function renderNoteItem(note) {
-        return (
-          <li>
-            <NoteItem key={note.id} note={note} />
-          </li>
-        );
-      })}
+    <ol reversed>
+      {notes
+        .sort(function sortByCreatedAt(a, b) {
+          return b.createdAt.getTime() - a.createdAt.getTime();
+        })
+        .map(function renderNoteItem(note) {
+          return (
+            <li key={note.id}>
+              <NoteItem key={note.id} note={note} />
+            </li>
+          );
+        })}
     </ol>
   );
 }

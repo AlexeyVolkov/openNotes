@@ -1,10 +1,11 @@
 // AddNoteForm.tsx
 import React, { useId, useState } from "react";
-import { Note } from "./types";
-import { useStorage } from "../Storage/useStorage";
+
+import { useNotes } from "../Storage/useNotes";
+import { INote } from "./types";
 
 function AddNoteForm() {
-  const storage = useStorage();
+  const [, addNote] = useNotes();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const titleId = useId();
@@ -13,14 +14,14 @@ function AddNoteForm() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newNote: Note = {
+    const newNote: INote = {
       id: Math.floor(new Date().valueOf()),
       title,
       content,
       createdAt: new Date(),
     };
 
-    storage.put(newNote);
+    addNote(newNote);
     setTitle("");
     setContent("");
   };
