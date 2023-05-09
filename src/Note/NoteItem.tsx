@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNotes } from "../Storage/useNotes";
 import { useStorage } from "../Storage/useStorage";
 import { INote, INoteInitials, NoteItemProps } from "./types";
@@ -9,6 +9,36 @@ function NoteItem({ note }: NoteItemProps) {
   const { remove, put } = useStorage();
   const [notes, setNotes] = useNotes();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [canShare, setCanShare] = useState(false);
+
+  useEffect(
+    function checkShareAPI() {
+      const canShare =
+        "canShare" in window.navigator &&
+        window.navigator.canShare({
+          title: note.title,
+          text: note.content,
+        });
+      setCanShare(canShare);
+    },
+    [note]
+  );
+
+  function handleShare(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+
+    window.navigator.share({
+      title: note.title,
+      text: note.content,
+    });
+  }
+
+  function handleCopy(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+
+    const text = `${note.title}:\n\n${note.content}`;
+    navigator.clipboard.writeText(text);
+  }
 
   function handleEdit(noteInitials?: INoteInitials) {
     if (
@@ -66,7 +96,8 @@ function NoteItem({ note }: NoteItemProps) {
       <form>
         <fieldset>
           <legend>Actions</legend>
-          <button>Share</button>
+          {canShare && <button onClick={handleShare}>Share</button>}
+          {!canShare && <button onClick={handleCopy}>Copy text</button>}
           <button onClick={toggleModal}>Edit</button>
           <button onClick={handleDelete}>Delete</button>
         </fieldset>
