@@ -1,10 +1,9 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
-import { SeoPropsType } from './types'
+import { SeoPropsType } from "./types";
 
 function Seo(props: SeoPropsType) {
-  const { title, description } = props
+  const { title, description } = props;
   return (
     <Helmet>
       <title>{title}</title>
@@ -13,7 +12,7 @@ function Seo(props: SeoPropsType) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
     </Helmet>
-  )
+  );
 }
 
-export default Seo
+export default Seo;

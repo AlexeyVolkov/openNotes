@@ -1,36 +1,35 @@
-import React, { ChangeEvent } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-import { Form, Seo, Navigation } from './components'
-import useDebouncedLocalStorage from './utils/useDebouncedLocalStorage'
-import { debounceDelay, noteName } from './utils/constants'
-import styles from './App.module.scss'
-import packageJSON from '../package.json'
+import { Form, Seo, Navigation } from "./components";
+import useDebouncedLocalStorage from "./utils/useDebouncedLocalStorage";
+import { debounceDelay, noteName } from "./utils/constants";
+import { ChangeEvent } from "react";
 
 function App() {
   // note text
   const [noteText, setNoteText] = useDebouncedLocalStorage<string>(
     noteName,
-    '',
+    "",
     debounceDelay
-  )
+  );
 
   // on change handler
   const noteChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setNoteText(event.target.value)
-  }
+    setNoteText(event.target.value);
+  };
 
   return (
     <>
-      <Seo title={packageJSON.name} description={packageJSON.description} />
-      <header className={styles.header} id="top">
+      <Seo
+        title="OpenNote"
+        description="OpenNote  is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
+      />
+      <header>
         <Navigation text={noteText} />
       </header>
-      <main className="container">
+      <main>
         <Form onChange={noteChangeHandler}>{noteText}</Form>
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
