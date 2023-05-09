@@ -22,7 +22,7 @@ function App() {
         title="OpenNote"
         description="OpenNote  is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
       />
-      <header>
+      <header className="leading-none">
         <Navigation text={noteText} />
       </header>
       <main>
