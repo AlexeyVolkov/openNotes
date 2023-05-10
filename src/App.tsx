@@ -25,7 +25,7 @@ function App() {
     <>
       <Seo
         title="OpenNote"
-        description="OpenNote  is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
+        description="OpenNote is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
       />
       <header className="leading-none">
         <Navigation text={note.text} />
