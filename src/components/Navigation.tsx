@@ -1,5 +1,5 @@
-import GitHubIcon from "./icons/github.svg";
-import ShareText from "../ShareText/ShareText";
+import GitHubIcon from "../assets/github.svg";
+import ShareText from "./ShareText";
 
 export type NavigationPropsType = {
   text: string;
@@ -10,7 +10,7 @@ function Navigation({ text }: NavigationPropsType) {
     <nav className="py-2 border-b">
       <ul className="flex justify-around items-center gap-1">
         <li className="text-center">
-          <ShareText text={text} className="flex items-center gap-1" />
+          <ShareText text={text} />
         </li>
         <li>
           <a

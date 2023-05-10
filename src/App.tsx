@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { Form, Seo, Navigation } from "./components";
 import { debounceDelay, defaultNote } from "./utils/constants";
 import { INote } from "./utils/interface";
-import useDebouncedIndexedDB from "./utils/useDebouncedIndexedDB";
+import useDebouncedIndexedDB from "./utils/indexedDB/useDebouncedIndexedDB";
 
 function App() {
   const [note, setNote, isLoading] = useDebouncedIndexedDB(

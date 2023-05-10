@@ -1,6 +1,9 @@
 import { Helmet } from "react-helmet";
 
-import { SeoPropsType } from "./types";
+export type SeoPropsType = {
+  title?: string
+  description?: string
+}
 
 function Seo(props: SeoPropsType) {
   const { title, description } = props;

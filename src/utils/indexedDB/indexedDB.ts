@@ -1,12 +1,12 @@
 import { openDB, IDBPDatabase } from "idb";
-import { INote, INoteDatabase } from "./interface";
+import { INote, INoteDatabase } from "../interface";
 import {
   DB_NAME,
   DB_TABLE_NAME,
   DB_UNIQUE_KEY,
   DB_VERSION,
   defaultNote,
-} from "./constants";
+} from "../constants";
 
 let databasePromise: Promise<IDBPDatabase<INoteDatabase>>;
 

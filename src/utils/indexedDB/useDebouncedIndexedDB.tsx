@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useDebounce from "./useDebounce";
-import { INote } from "./interface";
+import useDebounce from "../useDebounce";
+import { INote } from "../interface";
 import { indexedDBStorage } from "./indexedDB";
 
 function useDebouncedIndexedDB(
