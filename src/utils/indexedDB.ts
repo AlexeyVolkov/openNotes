@@ -1,6 +1,12 @@
 import { openDB, IDBPDatabase } from "idb";
 import { INote, INoteDatabase } from "./interface";
-import { DB_NAME, DB_TABLE_NAME, DB_UNIQUE_KEY, DB_VERSION } from "./constants";
+import {
+  DB_NAME,
+  DB_TABLE_NAME,
+  DB_UNIQUE_KEY,
+  DB_VERSION,
+  defaultNote,
+} from "./constants";
 
 let databasePromise: Promise<IDBPDatabase<INoteDatabase>>;
 
@@ -36,13 +42,14 @@ async function getNote(): Promise<INote> {
 
     if (typeof note === "undefined") {
       console.error("note is undefined");
-      throw new Error("note is undefined");
+      return defaultNote;
     }
 
     return note;
   } else {
     console.error("database is null");
-    throw new Error("database is null");
+
+    return defaultNote;
   }
 }
 
