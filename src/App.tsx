@@ -1,5 +1,5 @@
-import { ChangeEvent, useRef, useState } from "react";
-import { Form, Seo, Navigation } from "./components";
+import { useRef } from "react";
+import { Seo, Navigation } from "./components";
 import { debounceDelay, defaultNote } from "./utils/constants";
 import { INote } from "./utils/interface";
 import useDebouncedIndexedDB from "./utils/indexedDB/useDebouncedIndexedDB";
