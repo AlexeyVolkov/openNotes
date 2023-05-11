@@ -30,7 +30,7 @@ function App() {
       <header className="leading-none">
         <Navigation text={note.text} />
       </header>
-      <main>
+      <main className="p-safe">
         <Form onChange={onChange} disabled={isLoading}>
           {note.text}
         </Form>

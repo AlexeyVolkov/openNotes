@@ -13,7 +13,9 @@
     "idb": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "tailwindcss-safe-area": "^0.2.2",
+    "workbox-build": "^6.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
