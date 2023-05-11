@@ -1,28 +1,30 @@
-# Open Notes - React Notes App Boilerplate
+# OpenNote
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+## Your Open-Source Note-Taking Companion
 
-## Quick start
+OpenNote is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere. It was developed using [React](https://reactjs.org).
 
-In the project directory, you can run: `npm install && npm start` Runs the app
-in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Quick Start
 
-## Motivation
+Getting started with OpenNote is as easy as running a few commands. In your project directory, simply run:
 
-There are projects like [Write.as](https://write.as),
-[Joplin](https://joplinapp.org), [Standard Notes](https://standardnotes.com) to
-save and share plain notes.
+```bash
+npm install && npm start
+```
 
-Making their clone looking at their code could be confusing.
+This will start the app in development mode. You can then open [http://localhost:5173](http://localhost:5173) in your browser to view it.
 
-## Solution
+## Why OpenNote?
 
-This React Notes App playground has features like debounced input, local
-storage, offline-ready app and native share option. It's simple and clear.
+While there are numerous note-taking solutions available such as [Write.as](https://write.as), [Joplin](https://joplinapp.org), and [Standard Notes](https://standardnotes.com), navigating and learning from their codebases can be challenging due to their complexity.
 
-## Contributors
+## Our Solution
+
+OpenNote is a minimalist yet feature-rich note-taking platform that serves as an excellent starting point for those interested in building their own note-taking applications. It includes features such as debounced input, local storage, offline capability, and native share option, all bundled in a clean and comprehensible codebase.
+
+## Contributing
+
+OpenNote is an open-source project, and contributions are always welcome. Check out our [GitHub contributors page](https://github.com/slimcandy/openNotes/graphs/contributors) to see who's been helping out, and feel free to dive in yourself!
 
 <a href="https://github.com/slimcandy/openNotes/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=slimcandy/openNotes" />

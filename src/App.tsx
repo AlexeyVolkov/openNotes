@@ -1,36 +1,42 @@
-import React, { ChangeEvent } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-import { Form, Seo, Navigation } from './components'
-import useDebouncedLocalStorage from './utils/useDebouncedLocalStorage'
-import { debounceDelay, noteName } from './utils/constants'
-import styles from './App.module.scss'
-import packageJSON from '../package.json'
+import { ChangeEvent } from "react";
+import { Form, Seo, Navigation } from "./components";
+import { debounceDelay, defaultNote } from "./utils/constants";
+import { INote } from "./utils/interface";
+import useDebouncedIndexedDB from "./utils/indexedDB/useDebouncedIndexedDB";
 
 function App() {
-  // note text
-  const [noteText, setNoteText] = useDebouncedLocalStorage<string>(
-    noteName,
-    '',
+  const [note, setNote, isLoading] = useDebouncedIndexedDB(
+    defaultNote,
     debounceDelay
-  )
+  );
 
-  // on change handler
-  const noteChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setNoteText(event.target.value)
-  }
+  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const nextNote: INote = {
+      ...note,
+      text: event.target.value,
+      updatedAt: new Date(),
+      id: 1,
+    };
+
+    setNote(nextNote);
+  };
 
   return (
     <>
-      <Seo title={packageJSON.name} description={packageJSON.description} />
-      <header className={styles.header} id="top">
-        <Navigation text={noteText} />
+      <Seo
+        title="OpenNote"
+        description="OpenNote is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
+      />
+      <header className="leading-none">
+        <Navigation text={note.text} />
       </header>
-      <main className="container">
-        <Form onChange={noteChangeHandler}>{noteText}</Form>
+      <main className="p-safe">
+        <Form onChange={onChange} disabled={isLoading}>
+          {note.text}
+        </Form>
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
