@@ -2,6 +2,7 @@
   "name": "OpenNote",
   "short_name": "OpenNote",
   "description": "An open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere.",
+
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

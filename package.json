@@ -1,9 +1,20 @@
 {
   "name": "opennotes",
+  "description": "An open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere.",
+  "keywords": [
+    "note-taking",
+    "open-source",
+    "offline-capable",
+    "ideas",
+    "PWA",
+    "productivity",
+    "free"
+  ],
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -13,9 +24,7 @@
     "idb": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "tailwindcss-safe-area": "^0.2.2",
-    "workbox-build": "^6.5.4"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -30,7 +39,19 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
+    "tailwindcss-safe-area": "^0.2.2",
     "typescript": "^5.0.2",
-    "vite": "^4.3.2"
-  }
+    "vite": "^4.3.2",
+    "workbox-build": "^6.5.4"
+  },
+  "author": "@slimcandy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimcandy/openNotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slimcandy/openNotes/issues"
+  },
+  "homepage": "https://note.js.garden"
 }
