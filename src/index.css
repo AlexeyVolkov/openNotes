@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ql-container {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  font-variant-numeric: inherit;
+  hyphens: inherit;
+  text-align: inherit;
+}
