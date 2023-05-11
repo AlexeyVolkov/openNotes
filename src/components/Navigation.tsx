@@ -3,11 +3,12 @@ import ShareText from "./ShareText";
 
 export type NavigationPropsType = {
   text: string;
+  className?: string;
 };
 
-function Navigation({ text }: NavigationPropsType) {
+function Navigation({ text, className }: NavigationPropsType) {
   return (
-    <nav className="py-2 border-b">
+    <nav className={className}>
       <ul className="flex justify-around items-center gap-1">
         <li className="text-center">
           <ShareText text={text} />

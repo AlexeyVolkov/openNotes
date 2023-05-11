@@ -32,7 +32,10 @@ function App() {
         description="OpenNote is an open-source, offline-capable note-taking application, designed to capture and share your ideas freely and efficiently, anytime, anywhere."
       />
       <header className="leading-none">
-        <Navigation text={copyToClipboard} />
+        <Navigation
+          className="py-2 border-b border-blackov"
+          text={copyToClipboard}
+        />
       </header>
       <main className="p-safe mt-2 flex justify-center items-center">
         <ReactQuill
@@ -41,8 +44,8 @@ function App() {
           theme="bubble"
           className="
           mt-2
-          font-sans text-2xl font-thin oldstyle-nums hyphens-auto text-justify
-          border-2 rounded-lg p-4 mx-4 w-10/12"
+          text-2xl font-thin oldstyle-nums hyphens-auto text-justify 
+          border-2 border-blackov rounded-lg p-4 mx-4 w-10/12"
           value={note.text}
           onChange={onWYSIWYGChange}
           placeholder="Write…"
